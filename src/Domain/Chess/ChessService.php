@@ -49,7 +49,6 @@ class ChessService implements ChessServiceInterface
                 $current[0] == $finisRank &&
                 $current[1] == $finisFile
             ) {
-                //todo return current
                 break;
             }
             $moves = [
