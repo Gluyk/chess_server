@@ -79,6 +79,7 @@ class ChessService implements ChessServiceInterface
             array_unshift($roadMap, [Ranks::getFromNumber($x), Files::from($y)]);
         }
 
+        //TODO return Square[]
         return $roadMap;
     }
 }
