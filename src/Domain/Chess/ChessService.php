@@ -45,10 +45,7 @@ class ChessService implements ChessServiceInterface
 
         while (count($queue) > 0) {
             $current = array_shift($queue);
-            if (
-                $current[0] == $finisRank &&
-                $current[1] == $finisFile
-            ) {
+            if ($current[0] == $finisRank && $current[1] == $finisFile) {
                 break;
             }
             $moves = [
