@@ -66,7 +66,7 @@ class ChessService implements ChessServiceInterface
                 $x = $current[0] + $move[0];
                 $y = $current[1] + $move[1];
                 //TODO first and last position from enum
-                if ($x >= 1 && $x <= 8 && $y >= 1 && $y <= 8) {
+                if ($x >= 1 && $x <= 8 && $y >= 1 && $y <= 8 && !$board[$x][$y][2]) {
                     $board[$x][$y] = [$current[0], $current[1], true];
                     $queue[] = [$x, $y];
                 }
