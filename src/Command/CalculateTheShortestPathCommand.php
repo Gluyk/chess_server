@@ -3,15 +3,18 @@
 namespace App\Command;
 
 use App\Domain\Chess\ChessServiceInterface;
+use App\Domain\Chess\Desk\Ranks;
+use App\Domain\Chess\Desk\Square;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use App\Domain\Chess\Desk\Figure;
 use Webmozart\Assert\Assert;
+use App\Domain\Chess\Desk\Files;
 
 
 //TODO description, examples
@@ -43,7 +46,6 @@ class CalculateTheShortestPathCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $io = new SymfonyStyle($input, $output);
         $figure = Figure::from($input->getArgument('figure'));
         $startPosition = $input->getArgument('start_position');
         $finisPosition = $input->getArgument('finis_position');
@@ -59,10 +61,27 @@ class CalculateTheShortestPathCommand extends Command
             'Finis position should contain contain %2$s characters. Got: %s'
         );
 
+        $startSquare = new Square(
+            Ranks::from(substr($startPosition, 0,1)),
+            Files::from(substr($startPosition, -1))
+        );
+        $finisSquare = new Square(
+            Ranks::from(substr($finisPosition, 0,1)),
+            Files::from(substr($finisPosition, -1))
+        );
 
-//        $this->chessService->calculateTheShortestPath($figure, );
+        $results = $this->chessService->calculateTheShortestPath($figure, $startSquare, $finisSquare);
+        $steps = [];
+        foreach ($results as $result) {
+            $steps[] = [$result[0]->value . $result[1]->value];
+        }
 
-//        $io->success('array to string with position');
+        $table = new Table($output);
+        $table
+            ->setHeaders(['Steps'])
+            ->setRows($steps)
+        ;
+        $table->render();
 
         return Command::SUCCESS;
     }
