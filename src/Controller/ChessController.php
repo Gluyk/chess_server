@@ -52,11 +52,11 @@ class ChessController extends AbstractController
 
         $figure = Figure::from($shortestPathRequest->figure);
         $startSquare = new Square(
-            Ranks::from(substr($shortestPathRequest->startPosition, 0,1)),
+            Ranks::from(substr($shortestPathRequest->startPosition, 0, 1)),
             Files::from(substr($shortestPathRequest->startPosition, -1))
         );
         $finisSquare = new Square(
-            Ranks::from(substr($shortestPathRequest->finisPosition, 0,1)),
+            Ranks::from(substr($shortestPathRequest->finisPosition, 0, 1)),
             Files::from(substr($shortestPathRequest->finisPosition, -1))
         );
         $results = $this->chessService->calculateTheShortestPath($figure, $startSquare, $finisSquare);

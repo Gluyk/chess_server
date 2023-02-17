@@ -16,7 +16,6 @@ use App\Domain\Chess\Desk\Figure;
 use Webmozart\Assert\Assert;
 use App\Domain\Chess\Desk\Files;
 
-
 //TODO description, examples
 /**
  * php bin/console app:calculate-the-shortest-path knight 2 3
@@ -27,7 +26,6 @@ use App\Domain\Chess\Desk\Files;
 )]
 class CalculateTheShortestPathCommand extends Command
 {
-
     public function __construct(
         private readonly ChessServiceInterface $chessService,
         string $name = null,
@@ -62,11 +60,11 @@ class CalculateTheShortestPathCommand extends Command
         );
 
         $startSquare = new Square(
-            Ranks::from(substr($startPosition, 0,1)),
+            Ranks::from(substr($startPosition, 0, 1)),
             Files::from(substr($startPosition, -1))
         );
         $finisSquare = new Square(
-            Ranks::from(substr($finisPosition, 0,1)),
+            Ranks::from(substr($finisPosition, 0, 1)),
             Files::from(substr($finisPosition, -1))
         );
 
