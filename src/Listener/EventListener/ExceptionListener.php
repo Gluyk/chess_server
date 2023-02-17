@@ -1,4 +1,7 @@
 <?php
+// phpcs:ignoreFile
+// TODO
+// phpcs not supported readonly class from 8.2
 
 namespace App\Listener\EventListener;
 
