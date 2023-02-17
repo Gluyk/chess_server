@@ -7,7 +7,7 @@ use App\Domain\Chess\Desk\Square;
 use App\Domain\Chess\Desk\Files;
 use App\Domain\Chess\Desk\Ranks;
 
-class ChessService implements ChessServiceInterface
+final class ChessService implements ChessServiceInterface
 {
     private Square $startSquare;
     private Square $finisSquare;
