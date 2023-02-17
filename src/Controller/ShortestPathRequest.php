@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Domain\Chess\Desk\Figure;
-use ES\Domain\User\OAuth\GrantType;
 use OpenApi\Attributes\Property;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
